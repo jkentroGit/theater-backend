@@ -1,38 +1,32 @@
 const User = require('../models/user.model');
-const userService = require('../services/user.services');
 const bcrypt = require('bcrypt');
 
-// const logger = require('../logger/logger');
 
 exports.findAll = async(req, res) => {
   console.log("Find all users from collection users");
 
   try {
-    const result = await userService.findAll();
+    const result = await User.find();
     res.status(200).json({status: true, data: result});
-    // logger.info("Success in reading all users");
-    // logger.warn("Success in reading all users");
-    // logger.error("Message with error");
   } catch (err) {
     console.log("Problem in reading users", err);
-    // logger.error("Problem in reading all users", err);
     res.status(400).json({status:false, data: err});
   }
 }
 
 exports.findOne = async(req,res) => {
-  console.log("Find one user");
-  let username = req.params.username;
+  
+  const username = req.params.username;
   
   try {
-    const result = await userService.findOne(username);
+    const result = await User.findOne({username});
     if (result) {
-      req.status(200).json({status:true, data:result})
+      res.status(200).json({status:true, data:result})
     } else {
-      req.status(404).json({status:false, data: "User does not exist"})
+      res.status(404).json({status:false, data: "User does not exist"})
     } 
   } catch (err) {
-    res.status(400).json({status:false, data: err});
+    res.status(400).json({status:false, data:err});
   }
   }
 
@@ -73,8 +67,9 @@ exports.create = async(req, res) => {
 }
 
 exports.update = async(req, res) => {
-  console.log("Update User");
   const username = req.body.username;
+  
+  console.log("Update User");
      
   const updatedUser = {
     name: req.body.name,
@@ -97,6 +92,23 @@ exports.update = async(req, res) => {
     res.status(200).json({status: true, data: result});
   } catch (err) {
     console.log("Problem in updating user", err);
+    res.status(400).json({status: false, data: err});
+  }
+}
+
+exports.deleteByUsername = async(req,res) => {
+  console.log("Delete user");
+  const username = req.params.username;
+
+  try {
+    if(await User.findOne({username})) {
+    const result = await User.findOneAndDelete({username: username});
+    res.status(200).json({status: true, data: result});
+    } else {
+      res.status(400).json({status: false, data: "User does not exist"});
+    } 
+  } catch (err) {
+    console.log("Problem in deleting user", err);
     res.status(400).json({status: false, data: err});
   }
 }
