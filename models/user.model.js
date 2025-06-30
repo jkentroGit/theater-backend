@@ -49,7 +49,12 @@ let userSchema = new Schema({
   },
   address: addressSchema,
   phone: { type: [phoneSchema], null: true},
-  roles: {type:[String], null: true}
+  role: {
+    type: String,
+    enum: ['ADMIN', 'USER'],
+    default: 'USER',
+    required: true
+  }
 },
 {
   collection: 'users',

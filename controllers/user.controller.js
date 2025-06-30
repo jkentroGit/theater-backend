@@ -54,7 +54,8 @@ exports.create = async(req, res) => {
     phone: {
       type: data.phone.type,
       number: data.phone.number
-    } 
+    },
+    role: data.role
   });
 
   try{
