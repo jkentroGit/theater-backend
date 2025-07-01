@@ -6,11 +6,11 @@ app.use(express.json());
 const user = require('./routes/user.routes');
 const play = require('./routes/play.routes');
 const auth = require('./routes/auth.routes');
-const hall = require('./routes/hall.routes');
+const show = require('./routes/show.routes');
 
 app.use('/api/users', user);
 app.use('/api/plays', play);
 app.use('/api/auth', auth);
-app.use('/api/halls', hall);
+app.use('/api/shows', show);
 
 module.exports = app

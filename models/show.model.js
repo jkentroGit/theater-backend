@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Play = require('../models/play.model');
+const Play = require('./play.model');
 const Schema = mongoose.Schema;
 
 const seatSchema = new Schema({
@@ -11,7 +11,7 @@ const rowSchema = new Schema({
   seats: [seatSchema]
 });
 
-const hallSchema = new Schema({
+const showSchema = new Schema({
    playId: { 
     type: Schema.Types.ObjectId, 
     ref: 'Play', 
@@ -34,8 +34,8 @@ const hallSchema = new Schema({
   rows: [rowSchema],
 
 }, {
-  collection: 'halls',
+  collection: 'shows',
   timestamps: true
 });
 
-module.exports = mongoose.model("Hall", hallSchema);
+module.exports = mongoose.model("Show", showSchema);
