@@ -9,7 +9,7 @@ function generateAccessToken(user){
   }
 
   const secret = process.env.TOKEN_SECRET;
-  const options = { expiresIn: '1h'};
+  const options = { expiresIn: '2h'};
 
   return jwt.sign(payload, secret, options);
 }
@@ -21,7 +21,6 @@ function verifyAccessToken(token){
   try {
     const payload = jwt.verify(token, secret);
 
-    // console.log("VerifyToken", payload);
     return { verified: true, data: payload }
   } catch (err) {
     return { verified: false, data: err.message }

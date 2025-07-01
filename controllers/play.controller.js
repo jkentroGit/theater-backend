@@ -1,6 +1,4 @@
 const Play = require('../models/play.model');
-// const bcrypt = require('bcrypt');
-
 
 exports.findAll = async(req, res) => {
   console.log("Find all plays from collection plays");

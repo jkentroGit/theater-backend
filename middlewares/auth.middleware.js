@@ -22,16 +22,14 @@ function verifyToken(req, res, next) {
   } 
 }
 
-function verifyRoles(allowedRole) {
+function verifyRole(allowedRole) {
   return (req, res, next) => {
     
-    if((!req.user || !req.user.roles)) {
-      return res.status(403).json({status: false, data: "Forbidden: no roles found"})
+    if((!req.user || !req.user.role)) {
+      return res.status(403).json({status: false, data: "Forbidden: no role found"})
     }
 
-    const userRole = req.user.role
-    
-    // const hasPermission = userRoles.some(role => allowedRole.includes(role));
+    const userRole = req.user.role    
     const hasPermission = userRole.includes(allowedRole)
 
     if (!hasPermission) {
@@ -42,4 +40,4 @@ function verifyRoles(allowedRole) {
   }
 }
 
-module.exports = { verifyToken, verifyRoles }
+module.exports = { verifyToken, verifyRole }

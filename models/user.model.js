@@ -19,7 +19,7 @@ let userSchema = new Schema({
     type: String,
     required: [true, 'Username is required'],
     max: 20,
-    unique: true,
+    unique: [true, 'Username is used my another user'],
     trim: true,
     lowercase: true
   },
@@ -43,7 +43,7 @@ let userSchema = new Schema({
     type: String,
     required: [ true, 'Email is required'],
     max: 20,
-    unique:true,
+    unique: [true, 'Email is used my another user'],
     trim: true,
     lowercase: true
   },
