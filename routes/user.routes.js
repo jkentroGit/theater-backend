@@ -6,10 +6,10 @@ const verifyToken = require('../middlewares/auth.middleware').verifyToken;
 const verifyRole = require('../middlewares/auth.middleware').verifyRole;
 
 
-router.get('/',  userController.findAll);
-router.get('/:username',   userController.findOne);
+router.get('/', verifyToken, verifyRole ("ADMIN"), userController.findAll);
+router.get('/:username', verifyToken, verifyRole ("ADMIN"), userController.findOne);
 router.post('/', userController.create);
-router.patch('/:username',  userController.update);
-router.delete('/:username', userController.deleteByUsername);
+router.patch('/:username', verifyToken, userController.update); // να ματσάρει το username με του token
+router.delete('/:username', verifyToken, verifyRole ("ADMIN"), userController.deleteByUsername);
 
 module.exports = router;
