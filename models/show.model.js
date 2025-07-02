@@ -31,6 +31,10 @@ const showSchema = new Schema({
     type: Date,
     required: true
   },
+  price: {
+    type: Number,
+    required: true
+  },
   rows: [rowSchema],
 
 }, {

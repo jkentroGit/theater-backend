@@ -54,6 +54,7 @@ exports.create = async (req,res) => {
     daysOfWeek: data.daysOfWeek,
     time: data.time,
     showDate: new Date(data.showDate),
+    price: data.price,
     rows
   });
 
