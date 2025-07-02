@@ -29,11 +29,11 @@ function verifyRole(allowedRole) {
       return res.status(403).json({status: false, data: "Forbidden: no role found"})
     }
 
-    const userRole = req.user.role    
-    const hasPermission = userRole.includes(allowedRole)
+    const userRole = req.user.role;
+    const hasPermission = (userRole === allowedRole);
 
     if (!hasPermission) {
-      return res.status(403).json({status: false, data: "Forbidden: insufficient permissions"})
+      return res.status(403).json({status: false, data: "Forbidden: Insufficient permissions"})
     }
 
     next()

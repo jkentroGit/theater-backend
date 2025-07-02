@@ -12,12 +12,29 @@ exports.findAll = async(req, res) => {
   }
 }
 
-exports.findOne = async(req,res) => {
+
+exports.findOneById = async(req,res) => {
+  
+  const id = req.params.id;
+  
+  try {
+    const result = await Play.findById(id);
+    if (result) {
+      res.status(200).json({status:true, data:result})
+    } else {
+      res.status(404).json({status:false, data: "Play does not exist"})
+    } 
+  } catch (err) {
+    res.status(400).json({status:false, data:err});
+  }
+  }
+
+exports.findOneByCode = async(req,res) => {
   
   const code = req.params.code;
   
   try {
-    const result = await User.findOne({code});
+    const result = await Play.findOne({code : code});
     if (result) {
       res.status(200).json({status:true, data:result})
     } else {

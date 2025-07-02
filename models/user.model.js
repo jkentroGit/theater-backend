@@ -9,11 +9,6 @@ let addressSchema = new Schema({
   tk: { type: String }
 }, {_id: false});
 
-let phoneSchema = new Schema({
-  type: {type: String},
-  number: {type: String}
-}, {_id: false});
-
 let userSchema = new Schema({
   username: {
     type: String,
@@ -48,7 +43,11 @@ let userSchema = new Schema({
     lowercase: true
   },
   address: addressSchema,
-  phone: { type: [phoneSchema], null: true},
+  mobile: {
+    type: String,
+    required: [ true, 'Mobile is required'],
+    max: 20
+  },
   role: {
     type: String,
     enum: ['ADMIN', 'USER'],

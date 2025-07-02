@@ -14,7 +14,7 @@ exports.findAll = async(req, res) => {
   }
 }
 
-exports.findOne = async(req,res) => {
+exports.findOneByUsername = async(req,res) => {
   
   const username = req.params.username;
   
@@ -51,10 +51,7 @@ exports.create = async(req, res) => {
       number: data.address.number,
       tk: data.address.tk
     },
-    phone: {
-      type: data.phone.type,
-      number: data.phone.number
-    },
+    mobile: data.mobile,
     role: data.role
   });
 
@@ -74,19 +71,16 @@ exports.update = async(req, res) => {
      
   const updatedUser = {
     name: req.body.name,
-    surname: req.body.surname,
-    email: req.body.email,
-    address: {
-      prefecture: req.body.address.prefecture,
-      road: req.body.address.road,
-      number:req.body.address.number,
-      tk: req.body.address.tk
+    surname : req.body.surname,
+    email : req.body.email,
+    address : {
+      prefecture : req.body.address.prefecture,
+      road : req.body.address.road,
+      number  :req.body.address.number,
+      tk : req.body.address.tk
     },
-    phone: {
-      type: req.body.phone.type,
-      number:req.body.phone.number
-    } 
-  };
+    mobile : req.body.mobile
+    };
 
   try{
     const result = await User.findOneAndUpdate({username: username}, updatedUser, {new:true});

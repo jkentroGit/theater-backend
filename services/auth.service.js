@@ -20,13 +20,11 @@ function verifyAccessToken(token){
   
   try {
     const payload = jwt.verify(token, secret);
-
     return { verified: true, data: payload }
+
   } catch (err) {
     return { verified: false, data: err.message }
   }
 }
-
-
 
 module.exports = { generateAccessToken, verifyAccessToken }

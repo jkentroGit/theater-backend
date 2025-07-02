@@ -16,7 +16,7 @@ exports.findAll = async(req, res) => {
 }
 
 
-exports.findOne = async(req,res) => {
+exports.findOneById = async(req,res) => {
   
   const id = req.params.id;
   
