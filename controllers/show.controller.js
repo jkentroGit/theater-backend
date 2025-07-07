@@ -42,7 +42,7 @@ exports.create = async (req,res) => {
     const seats = [];
     for (let seatNum = 1; seatNum <= 20; seatNum++) {
       seats.push({
-        label: `${rowNum}-${seatNum}`,  // e.g., "1-1", "1-2", ..., "10-20"
+        seatNumber: `${rowNum}-${seatNum}`,
         status: 'AVAILABLE'
       });
     }
@@ -74,7 +74,7 @@ exports.update = async (req, res) => {
 
     seatsToUpdate.forEach(({ label, status }) => {
       show.rows.forEach(row => {
-        const seat = row.seats.find(seat => seat.label === label);
+        const seat = row.seats.find(seat => seat.seatNumber === label);
         if (seat) {
           seat.status = status;
         }

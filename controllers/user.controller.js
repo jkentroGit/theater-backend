@@ -42,13 +42,13 @@ exports.create = async(req, res) => {
   const newUser = new User({
     username: data.username,
     password: hashedPassword,
-    name: data.name,
-    surname: data.surname,
+    firstname: data.firstname,
+    lastname: data.lastname,
     email: data.email,
     address: {
-      prefecture: data.address.prefecture,
-      road: data.address.road,
-      number: data.address.number,
+      city: data.address.city,
+      street: data.address.street,
+      streetNum: data.address.streetNum,
       tk: data.address.tk
     },
     mobile: data.mobile,
@@ -66,17 +66,17 @@ exports.create = async(req, res) => {
 
 exports.update = async(req, res) => {
   const username = req.body.username;
-  
+  s
   console.log("Update User");
      
   const updatedUser = {
-    name: req.body.name,
-    surname : req.body.surname,
+    firstname: req.body.name,
+    lastname : req.body.lastname,
     email : req.body.email,
     address : {
-      prefecture : req.body.address.prefecture,
-      road : req.body.address.road,
-      number  :req.body.address.number,
+      city : req.body.address.city,
+      street : req.body.address.street,
+      streetNum  :req.body.address.streetNum,
       tk : req.body.address.tk
     },
     mobile : req.body.mobile

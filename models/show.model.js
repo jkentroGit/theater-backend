@@ -3,8 +3,8 @@ const Play = require('./play.model');
 const Schema = mongoose.Schema;
 
 const seatSchema = new Schema({
-  label: { type: String, required: true },
-  status: { type: String, enum: ['AVAILABLE', 'RESERVED', 'BOOKED'], default: 'AVAILABLE' }
+  seatNumber: { type: String, required: true },
+  status: { type: String, enum: ['AVAILABLE', 'SELECTED', 'BOOKED'], default: 'AVAILABLE' }
 });
 
 const rowSchema = new Schema({

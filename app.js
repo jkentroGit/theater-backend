@@ -1,7 +1,16 @@
 const express = require("express");
+const cors = require('cors');
+
 const app = express();
 
+
 app.use(express.json());
+
+app.use(cors({
+    origin: 'http://localhost:4200',
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true
+}));
 
 const user = require('./routes/user.routes');
 const play = require('./routes/play.routes');

@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let addressSchema = new Schema({
-  prefecture: { type: String },
-  road: { type: String },
-  number: { type: String },
+  city: { type: String },
+  street: { type: String },
+  streetNum: { type: String },
   tk: { type: String }
 }, {_id: false});
 
@@ -24,12 +24,12 @@ let userSchema = new Schema({
     min: [8, 'Password must be at least 8 digits'],
     max:20
   },
-  name: {
+  firstname: {
     type: String,
     required: [true, 'Name is required'],
     max: 20
   },
-  surname: {
+  lastname: {
     type: String,
     required: [ true, 'Surname is required'],
     max: 20
