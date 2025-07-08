@@ -9,7 +9,7 @@ const verifyRole = require('../middlewares/auth.middleware').verifyRole;
 router.get('/', playController.findAll);
 router.get('/:id', playController.findOneById);
 router.get('/code/:code', playController.findOneByCode);
-router.post('/', verifyToken, verifyRole ("ADMIN"), playController.create);
+router.post('/', playController.create);
 router.patch('/:code', verifyToken, verifyRole ("ADMIN"), playController.update);
 router.delete('/:code', verifyToken, verifyRole ("ADMIN"), playController.deleteByCode);
 
