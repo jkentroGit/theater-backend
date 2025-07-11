@@ -10,7 +10,8 @@ router.get('/', playController.findAll);
 router.get('/:id', playController.findOneById);
 router.get('/code/:code', playController.findOneByCode);
 router.post('/', playController.create);
-router.patch('/:code', verifyToken, verifyRole ("ADMIN"), playController.update);
-router.delete('/:code', verifyToken, verifyRole ("ADMIN"), playController.deleteByCode);
+router.put('/:code', verifyToken, verifyRole ("ADMIN"), playController.update)
+router.delete('/:code', playController.deleteByCode);
 
 module.exports = router;
+

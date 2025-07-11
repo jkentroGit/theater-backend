@@ -74,7 +74,6 @@ exports.update = async(req, res) => {
   console.log("Update Play");
      
   const updatedPlay = {
-    code: data.code,
     title: data.title,
     year: data.year,
     director: data.director,
@@ -92,18 +91,15 @@ exports.update = async(req, res) => {
 }
 
 exports.deleteByCode = async(req,res) => {
-  console.log("Delete play");
+
   const code = req.params.code;
 
   try {
-    if(await Play.findOne({code})) {
-    const result = await Play.findOneAndDelete({code: code});
-    res.status(200).json({status: true, data: result});
-    } else {
-      res.status(400).json({status: false, data: "Play does not exist"});
-    } 
+    const deleted = await Play.findOneAndDelete({ code });
+   
+    res.status(200).json({ status: true, data: deleted });
   } catch (err) {
-    console.log("Problem in deleting play", err);
-    res.status(400).json({status: false, data: err});
+    console.error('Error deleting play:', err);
+    res.status(400).json({ status: false, message: 'Error deleting play', error: err });
   }
 }
