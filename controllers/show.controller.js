@@ -104,3 +104,14 @@ exports.deleteById = async(req,res) => {
     res.status(400).json({status: false, data: err});
   }
 }
+
+exports.deleteByPlayId = async (req, res) => {
+  const playId = req.params.playId;
+
+ try {
+    const result = await Show.deleteMany({playId});
+    res.status(200).json({ status: true, data: result});
+  } catch (err) {
+    res.status(500).json({ status: false, error: err });
+  }
+};
