@@ -5,7 +5,7 @@ const showController = require('../controllers/show.controller');
 const verifyToken = require('../middlewares/auth.middleware').verifyToken;
 const verifyRole = require('../middlewares/auth.middleware').verifyRole;
 
-router.delete('/by-play/:playId', verifyToken, verifyRole ("ADMIN"), showController.deleteByPlayId);
+router.delete('/by-play-id/:playId', verifyToken, verifyRole ("ADMIN"), showController.deleteByPlayId);
 router.get('/', showController.findAll);
 router.get('/:id', showController.findOneById);
 router.post('/', showController.create);
