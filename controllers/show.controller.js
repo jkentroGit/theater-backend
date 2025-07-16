@@ -93,8 +93,9 @@ exports.deleteById = async(req,res) => {
   const id = req.params.id;
 
   try {
+    
     if(await Show.findById(id)) {
-    const result = await Show.findOneAndDelete(id);
+    const result = await Show.findOneAndDelete({ _id: id });
     res.status(200).json({status: true, data: result});    
     } else {
       res.status(400).json({status: false, data: "show does not exist"});
