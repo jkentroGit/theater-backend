@@ -31,7 +31,12 @@ let playSchema = new Schema({
     type: String,
     required: [ true, 'Duration is required'],
     max: 3
-  }},
+  },
+  images: {
+    type: [String],
+  }
+
+},
 {
   collection: 'plays',
   timestamps: true
