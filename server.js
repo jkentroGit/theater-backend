@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGODB_URI)
       console.log("Επιτυχημένη σύνδεση με την MongoDB");
       
       app.listen(port, ()=>{
-        console.log("Server is up")
+        console.log("Επιτυχημένη σύνδεση με server")
       })
     },
     err => { console.log('Αποτυχία σύνδεσης με την MongoDB', err); }
