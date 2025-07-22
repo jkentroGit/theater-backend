@@ -32,6 +32,24 @@ exports.findOneByUsername = async(req,res) => {
   }
   }
 
+  exports.findOneByEmail = async(req,res) => {
+  
+  const email = req.params.email;
+  
+  try {
+    const result = await User.findOne({email});
+    if (result) {
+      res.status(200).json({status:true, data:result})
+      console.log("Επιτυχημένη εύρεση χρήστη με email");
+    } else {
+      res.status(404).json({status:false, data: "Το email δεν υπάρχει"})
+    } 
+  } catch (err) {
+    res.status(400).json({status:false, data:err});
+    console.log("Πρόβλημα στην εύρεση χρήστη");
+  }
+  }
+
 exports.create = async (req, res) => {
   try {
     const data = req.body;

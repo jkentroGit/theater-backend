@@ -45,7 +45,6 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: [true, 'Το email είναι υποχρεωτικό'],
-    maxlength: [20, 'Το email δεν μπορεί να ξεπερνά τους 20 χαρακτήρες'],
     unique: true,
     trim: true,
     lowercase: true
