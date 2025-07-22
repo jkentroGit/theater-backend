@@ -4,40 +4,38 @@ const Schema = mongoose.Schema;
 let playSchema = new Schema({
   code: {
     type: String,
-    required: [true, 'Code is required'],
-    max: 10
+    required: [true, 'Ο κωδικός είναι υποχρεωτικός'],
+    maxlength: [10, 'Ο κωδικός δεν μπορεί να ξεπερνά τους 10 χαρακτήρες']
   },
   title: {
     type: String,
-    required: [true, 'Title is required'],
-    max: 50,
-    trim: true,
+    required: [true, 'Ο τίτλος είναι υποχρεωτικός'],
+    maxlength: [50, 'Ο τίτλος δεν μπορεί να ξεπερνά τους 50 χαρακτήρες'],
+    trim: true
   },
   year: { 
     type: String, 
-    required: [true, 'Year is required'],
-     trim: true,
+    required: [true, 'Το έτος είναι υποχρεωτικό'],
+    trim: true
   },
   director: {
     type: String,
-    required: [true, 'Director is required'],
-    max: 20
+    required: [true, 'Ο σκηνοθέτης είναι υποχρεωτικός'],
+    maxlength: [30, 'Το όνομα σκηνοθέτη δεν μπορεί να ξεπερνά τους 30 χαρακτήρες']
   },
   cast: {
     type: String,
-    required: [ true, 'Cast is required']
+    required: [true, 'Το καστ είναι υποχρεωτικό']
   },
   duration: {
     type: String,
-    required: [ true, 'Duration is required'],
-    max: 3
+    required: [true, 'Η διάρκεια είναι υποχρεωτική'],
+    maxlength: [3, 'Η διάρκεια δεν μπορεί να ξεπερνά τους 3 χαρακτήρες']
   },
   images: {
-    type: [String],
+    type: [String]
   }
-
-},
-{
+}, {
   collection: 'plays',
   timestamps: true
 });

@@ -9,53 +9,55 @@ let addressSchema = new Schema({
   tk: { type: String }
 }, {_id: false});
 
-let userSchema = new Schema({
+const userSchema = new Schema({
   username: {
     type: String,
-    required: [true, 'Username is required'],
-    max: 20,
-    unique: [true, 'Username is used my another user'],
+    required: [true, 'Το όνομα χρήστη είναι υποχρεωτικό'],
+    maxlength: [20, 'Το όνομα χρήστη δεν μπορεί να ξεπερνά τους 20 χαρακτήρες'],
+    unique: true,
     trim: true,
     lowercase: true
   },
-  password: { 
-    type: String, 
-    required: [true, 'Password is required'],
-    min: [8, 'Password must be at least 8 digits'],
-    max:20
+  password: {
+    type: String,
+    required: [true, 'Ο κωδικός πρόσβασης είναι υποχρεωτικός'],
+    minlength: [8, 'Ο κωδικός πρόσβασης πρέπει να έχει τουλάχιστον 8 χαρακτήρες'],
+    maxlength: [20, 'Ο κωδικός πρόσβασης δεν μπορεί να ξεπερνά τους 20 χαρακτήρες']
   },
   firstname: {
     type: String,
-    required: [true, 'Name is required'],
-    max: 20
+    required: [true, 'Το όνομα είναι υποχρεωτικό'],
+    maxlength: [20, 'Το όνομα δεν μπορεί να ξεπερνά τους 20 χαρακτήρες']
   },
   lastname: {
     type: String,
-    required: [ true, 'Surname is required'],
-    max: 20
+    required: [true, 'Το επώνυμο είναι υποχρεωτικό'],
+    maxlength: [20, 'Το επώνυμο δεν μπορεί να ξεπερνά τους 20 χαρακτήρες']
   },
   email: {
     type: String,
-    required: [ true, 'Email is required'],
-    max: 20,
-    unique: [true, 'Email is used my another user'],
+    required: [true, 'Το email είναι υποχρεωτικό'],
+    maxlength: [50, 'Το email δεν μπορεί να ξεπερνά τους 50 χαρακτήρες'],
+    unique: true,
     trim: true,
     lowercase: true
   },
   address: addressSchema,
   mobile: {
     type: String,
-    required: [ true, 'Mobile is required'],
-    max: 20
+    required: [true, 'Το κινητό τηλέφωνο είναι υποχρεωτικό'],
+    maxlength: [20, 'Το κινητό δεν μπορεί να ξεπερνά τους 20 χαρακτήρες']
   },
   role: {
     type: String,
-    enum: ['ADMIN', 'USER'],
+    enum: {
+      values: ['ADMIN', 'USER'],
+      message: 'Ο ρόλος πρέπει να είναι ADMIN ή USER'
+    },
     default: 'USER',
-    required: true
+    required: [true, 'Ο ρόλος είναι υποχρεωτικός']
   }
-},
-{
+}, {
   collection: 'users',
   timestamps: true
 });

@@ -12,25 +12,24 @@ const rowSchema = new Schema({
 });
 
 const showSchema = new Schema({
-   playId: { 
+  playId: { 
     type: Schema.Types.ObjectId, 
     ref: 'Play', 
-    required: true 
+    required: [true, 'Η παράσταση πρέπει να συσχετιστεί με κάποιο έργο (playId)']
   },
   time: {
     type: String,
-    required: [true, 'Time is required']
+    required: [true, 'Η ώρα της παράστασης είναι υποχρεωτική']
   },
   showDate: {
     type: Date,
-    required: true
+    required: [true, 'Η ημερομηνία της παράστασης είναι υποχρεωτική']
   },
   price: {
     type: Number,
-    required: true
+    required: [true, 'Η τιμή εισιτηρίου είναι υποχρεωτική']
   },
-  rows: [rowSchema],
-
+  rows: [rowSchema]
 }, {
   collection: 'shows',
   timestamps: true

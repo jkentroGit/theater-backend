@@ -9,17 +9,16 @@ exports.login = async(req, res) =>{
   
   try {
     const result = await User.findOne({username: username},{username:1, email:1, password:1, role:1})
-
     const isMatch = await bcrypt.compare(password, result.password);
    
     if (result.username === username && isMatch){
       const token = authService.generateAccessToken(result)
       res.status(200).json({status: true, data: token});
     } else {
-      res.status(404).json({status: false, data: "Credentials not correct"});
+      res.status(404).json({status: false, data: "Πρόβλημα με το username ή το password"});
     }
   } catch (err) {
-    console.log("Problem in logging", err);
+    console.log("Πρόβλημα με την σύνδεση", err);
     res.status(400).json({status: false, data: err})
   }
 };
