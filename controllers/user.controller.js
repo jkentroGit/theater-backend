@@ -49,10 +49,10 @@ exports.create = async (req, res) => {
       lastname: data.lastname,
       email: data.email,
       address: {
-        city: data.address?.city,
-        street: data.address?.street,
-        streetNum: data.address?.streetNum,
-        tk: data.address?.tk
+        city: data.address.city,
+        street: data.address.street,
+        streetNum: data.address.streetNum,
+        tk: data.address.tk
       },
       mobile: data.mobile,
       role: data.role
@@ -63,7 +63,7 @@ exports.create = async (req, res) => {
     res.status(201).json({ status: true, data: result });
 
   } catch (err) {
-    console.log("Πρόβλημα κατά τη δημιουργία χρήστη");
+    console.log("Πρόβλημα κατά τη δημιουργία χρήστη", err);
     res.status(500).json({ status: false, error: err.message });
   }
 };

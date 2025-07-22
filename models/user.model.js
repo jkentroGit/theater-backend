@@ -3,10 +3,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let addressSchema = new Schema({
-  city: { type: String },
-  street: { type: String },
-  streetNum: { type: String },
-  tk: { type: String }
+  city: { type: String,
+     required: [true, 'Το όνομα της πόλης είναι υποχρεωτικό']
+   },
+  street: { type: String,
+     required: [true, 'Το όνομα της οδού είναι υποχρεωτικό']
+   },
+  streetNum: { type: String,
+     required: [true, 'Ο αριθμός είναι υποχρεωτικός']
+   },
+  tk: { type: String,
+     required: [true, 'Ο ΤΚ είναι υποχρεωτικός']
+   }
 }, {_id: false});
 
 const userSchema = new Schema({
@@ -21,8 +29,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Ο κωδικός πρόσβασης είναι υποχρεωτικός'],
-    minlength: [8, 'Ο κωδικός πρόσβασης πρέπει να έχει τουλάχιστον 8 χαρακτήρες'],
-    maxlength: [20, 'Ο κωδικός πρόσβασης δεν μπορεί να ξεπερνά τους 20 χαρακτήρες']
+    minlength: [8, 'Ο κωδικός πρόσβασης πρέπει να έχει τουλάχιστον 8 χαρακτήρες']
+   
   },
   firstname: {
     type: String,
@@ -37,7 +45,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: [true, 'Το email είναι υποχρεωτικό'],
-    maxlength: [50, 'Το email δεν μπορεί να ξεπερνά τους 50 χαρακτήρες'],
+    maxlength: [20, 'Το email δεν μπορεί να ξεπερνά τους 20 χαρακτήρες'],
     unique: true,
     trim: true,
     lowercase: true
@@ -55,7 +63,7 @@ const userSchema = new Schema({
       message: 'Ο ρόλος πρέπει να είναι ADMIN ή USER'
     },
     default: 'USER',
-    required: [true, 'Ο ρόλος είναι υποχρεωτικός']
+    // required: [true, 'Ο ρόλος είναι υποχρεωτικός']
   }
 }, {
   collection: 'users',
