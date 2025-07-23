@@ -95,12 +95,13 @@ exports.update = async (req, res) => {
       lastname: req.body.lastname,
       email: req.body.email,
       address: {
-        city: req.body.address?.city,
-        street: req.body.address?.street,
-        streetNum: req.body.address?.streetNum,
-        tk: req.body.address?.tk
+        city: req.body.address.city,
+        street: req.body.address.street,
+        streetNum: req.body.address.streetNum,
+        tk: req.body.address.tk
       },
-      mobile: req.body.mobile
+      mobile: req.body.mobile,
+      role: data.role
     };
 
     const result = await User.findOneAndUpdate(
