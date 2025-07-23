@@ -1,11 +1,11 @@
 const Play = require('../models/play.model');
 
 exports.findAll = async(req, res) => {
-  console.log("Εύρεση όλων των έργων");
-
+  
   try {
     const result = await Play.find();
     res.status(200).json({status: true, data: result});
+    console.log("Επιτυχημένη εύρεση όλων των έργων");
   } catch (err) {
     console.log("Πρόβλημα στην εύρεση των έργων", err);
     res.status(400).json({status:false, data: err});
@@ -21,6 +21,7 @@ exports.findOneById = async(req,res) => {
     const result = await Play.findById(id);
     if (result) {
       res.status(200).json({status:true, data:result})
+      console.log("Το έργο βρέθηκε");
     } else {
       res.status(404).json({status:false, data: "Το έργο δεν υπάρχει"})
     } 
@@ -37,6 +38,7 @@ exports.findOneByCode = async(req,res) => {
     const result = await Play.findOne({code : code});
     if (result) {
       res.status(200).json({status:true, data:result})
+      console.log("Το έργο βρέθηκε");
     } else {
       res.status(404).json({status:false, data: "Το έργο δεν υπάρχει"})
     } 
@@ -46,7 +48,7 @@ exports.findOneByCode = async(req,res) => {
   }
 
 exports.create = async(req, res) => {
-  console.log("Δημιουργία νέου έργου");
+  
   let data = req.body;
    
   const newPlay = new Play({
@@ -61,6 +63,7 @@ exports.create = async(req, res) => {
   try{
     const result = await newPlay.save();
     res.status(200).json({status: true, data: result});
+    console.log("Δημιουργία νέου έργου");
   } catch (err) {
     console.log("Πρόβλημα στη δημιουργία έργου", err);
     res.status(400).json({status: false, data: err});
