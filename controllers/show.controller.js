@@ -31,7 +31,7 @@ exports.findOneById = async(req,res) => {
     } 
   } catch (err) {
     res.status(400).json({status:false, data:err});
-    console.log("Εύρεση παράστασης επιτυχημένη");
+    console.log("Πρόβλημα εύρεσης παράστασης");
   }
   }
 
