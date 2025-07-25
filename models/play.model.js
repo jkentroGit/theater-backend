@@ -29,8 +29,7 @@ let playSchema = new Schema({
   },
   duration: {
     type: String,
-    required: [true, 'Η διάρκεια είναι υποχρεωτική'],
-    maxlength: [3, 'Η διάρκεια δεν μπορεί να ξεπερνά τους 3 χαρακτήρες']
+    required: [true, 'Η διάρκεια είναι υποχρεωτική']
   },
   images: {
     type: [String]
