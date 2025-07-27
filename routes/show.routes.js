@@ -8,7 +8,7 @@ const verifyRole = require('../middlewares/auth.middleware').verifyRole;
 router.delete('/by-play-id/:playId', verifyToken, verifyRole ("ADMIN"), showController.deleteByPlayId);
 router.get('/', showController.findAll);
 router.get('/:id', showController.findOneById);
-router.post('/', showController.create);
+router.post('/', verifyToken, verifyRole ("ADMIN"), showController.create);
 router.put('/:id', verifyToken, showController.update);
 router.delete('/:id', verifyToken, verifyRole ("ADMIN"), showController.deleteById);
 

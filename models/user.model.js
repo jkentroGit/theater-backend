@@ -62,7 +62,6 @@ const userSchema = new Schema({
       message: 'Ο ρόλος πρέπει να είναι ADMIN ή USER'
     },
     default: 'USER',
-    // required: [true, 'Ο ρόλος είναι υποχρεωτικός']
   }
 }, {
   collection: 'users',

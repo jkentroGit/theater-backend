@@ -4,14 +4,15 @@ function generateAccessToken(user){
 
   const payload = {
     username: user.username,
-    email: user.email,
     role: user.role
   }
-
+//Διάρκεια token ανάλογα τον χρήστη//
   const secret = process.env.TOKEN_SECRET;
-  const options = { expiresIn: '10m'};
+  const optionsADMIN = { expiresIn: '1h'};
+  const optionsUSER = { expiresIn: '10m'};
 
-  return jwt.sign(payload, secret, options);
+  if (user.role === 'ADMIN') {return jwt.sign(payload, secret, optionsADMIN);
+} else return jwt.sign(payload, secret, optionsUSER);
 }
 
 
