@@ -7,7 +7,6 @@ const verifyRole = require('../middlewares/auth.middleware').verifyRole;
 
 
 router.get('/', userController.findAll);
-router.get('/email/:email', userController.findOneByEmail);
 router.get('/:username', verifyToken, verifyRole ("ADMIN"), userController.findOneByUsername);
 router.post('/', userController.create);
 router.patch('/:username', verifyToken, userController.update);

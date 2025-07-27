@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const app = require('./app');
+const express = require('express');
+const path = require('path');
+const app = express();
 const port = 3000;
 
 mongoose.connect(process.env.MONGODB_URI)
