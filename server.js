@@ -1,7 +1,13 @@
+// const mongoose = require("mongoose");
+// const express = require('express');
+// const path = require('path');
+// const app = express();
+// const port = 3000;
+
+
+// require('dotenv').config(); // if you need env variables
 const mongoose = require("mongoose");
-const express = require('express');
-const path = require('path');
-const app = express();
+const app = require("./app"); // Import the configured Express app
 const port = 3000;
 
 mongoose.connect(process.env.MONGODB_URI)
